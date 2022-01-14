@@ -1,0 +1,22 @@
+test:
+  environment: test
+
+---
+spring:
+  config:
+    activate:
+      on-profile: profileA
+
+test:
+  environment: prod
+
+
+---
+spring:
+  config:
+    activate:
+      on-profile: profileB
+    import:
+      - application/${test.environment}.yml
+
+otherProp: ${test.environment}
